@@ -5,24 +5,38 @@
 
 ## Table of Contents
 1. [Project Overview & Motivation](#1-project-overview--motivation)
-2. [Theoretical Foundations & Mathematical Formulas](#2-theoretical-foundations--mathematical-formulas)
-3. [Domain Pivot: AI Pilot Challenge](#3-domain-pivot-ai-pilot-challenge)
-4. [System Implementation & File Structure](#4-system-implementation--file-structure)
-5. [In-Depth Experimental Results & Analysis](#5-in-depth-experimental-results--analysis)
+2. [The Problem: Limitations of Existing Models](#2-the-problem-limitations-of-existing-models)
+3. [Theoretical Foundations & Mathematical Formulas](#3-theoretical-foundations--mathematical-formulas)
+4. [Domain Pivot: AI Pilot Challenge](#4-domain-pivot-ai-pilot-challenge)
+5. [System Implementation & File Structure](#5-system-implementation--file-structure)
+6. [In-Depth Experimental Results & Analysis](#6-in-depth-experimental-results--analysis)
 
 ---
 
 ## 1. Project Overview & Motivation
 The project began as a 350M-parameter language model aiming to achieve cognitive intelligence. However, during 4,000 steps of statistical memorization training ($L_{ce}$), it suffered from "Semantic Collapse" (e.g., generating gibberish like `-alskman...`) and severe logical hallucinations. It became clear that simply increasing parameters and relying on statistical frequency (Cross-Entropy) does not lead to true causal understanding.
 
-To overcome this, the project underwent a radical paradigm shift:
-1.  **Architecture**: Shifted from discrete Transformer/RNN layers to a **Continuous Fractal Language Model (CFLM)**.
-2.  **Training**: Abandoned 50,000-epoch backpropagation in favor of **Zero-Epoch Few-Shot Learning (FCLAP)** and **Active Free Energy Tournament Loss (AFETL)** during a simulated "Sleep Phase".
-3.  **Domain**: Pivoted from text prediction to real-time flight dynamics (**2026 AI Pilot Top Gun Challenge**), shrinking the model from 350M to 15M parameters to enable $\mathcal{O}(1)$ real-time closed-loop control.
+To overcome this, the project underwent a radical paradigm shift, transitioning from a text-predicting SLLM into **Fighter-CFLM v2.8**, an AI capable of understanding real-world physical dynamics.
 
 ---
 
-## 2. Theoretical Foundations & Mathematical Formulas
+## 2. The Problem: Limitations of Existing Models
+This project was born out of the necessity to solve four critical flaws inherent in traditional Large Language Models (LLMs) and standard deep learning architectures:
+
+1.  **Statistical Mimicry vs. Causal Grounding**: Traditional autoregressive models rely on Cross-Entropy loss ($L_{ce}$) to predict the next token based on statistical frequency. This leads to "Semantic Looping" (e.g., endlessly repeating a phrase) and logical hallucinations, as the model merely mimics syntax without understanding the underlying physical causes and effects.
+2.  **High Latency ($\mathcal{O}(N^2)$) vs. Real-Time Control ($\mathcal{O}(1)$)**: Standard Transformers process sequences with quadratic time complexity. This makes them entirely unsuitable for continuous, real-time control systems (like flight dynamics) which require sub-millisecond latency.
+3.  **Catastrophic Forgetting**: Standard backpropagation blindly overwrites the entire monolithic weight matrix, destroying fundamental core knowledge when learning new tasks.
+4.  **Metabolic Inefficiency**: Traditional neural networks execute the entire deep forward pass regardless of how predictable the input is, wasting immense computational energy on trivial states.
+
+### The Fighter-CFLM Solution:
+*   **Physics over Syntax**: We pivoted to a flight simulator (JSBSim) where the model learns through physical consequences (AFETL) rather than next-token probability.
+*   **$\mathcal{O}(1)$ ODE Architecture**: Replaced discrete layers with a Continuous Fractal Language Model (CFLM) integrated via ODEs, shrinking the model to 15M parameters for instant real-time execution.
+*   **Dual Memory System**: Separated immutable physical laws ($\theta_{fixed}$) from an active learning cache ($\theta_{plastic}$) to prevent catastrophic forgetting.
+*   **Metabolic Gating**: Introduced "FastSurprisal," ensuring that heavy computation only activates when the AI encounters unexpected physical events.
+
+---
+
+## 3. Theoretical Foundations & Mathematical Formulas
 
 ### A. Dual Memory System & FastSurprisal
 The architecture separates memory into two distinct weights:
@@ -45,7 +59,7 @@ Only the agent with the lowest energy (lowest AFETL score) is merged into the lo
 
 ---
 
-## 3. Domain Pivot: AI Pilot Challenge
+## 4. Domain Pivot: AI Pilot Challenge
 
 To participate in the combat flight simulation challenge, the I/O interface was completely overhauled to handle physical vectors instead of language tokens.
 
@@ -58,7 +72,7 @@ To participate in the combat flight simulation challenge, the I/O interface was 
 
 ---
 
-## 4. System Implementation & File Structure
+## 5. System Implementation & File Structure
 
 The project operates on a "Day (Real-time Simulation) / Night (Cloud Consolidation)" cycle:
 
@@ -69,7 +83,7 @@ The project operates on a "Day (Real-time Simulation) / Night (Cloud Consolidati
 
 ---
 
-## 5. In-Depth Experimental Results & Analysis
+## 6. In-Depth Experimental Results & Analysis
 
 ![Flight Evolution](flight_evolution_graph.png)
 
@@ -99,24 +113,38 @@ The project operates on a "Day (Real-time Simulation) / Night (Cloud Consolidati
 
 ## 목차
 1. [프로젝트 개요 및 동기](#1-프로젝트-개요-및-동기)
-2. [이론적 기반 및 수학적 공식](#2-이론적-기반-및-수학적-공식)
-3. [도메인 전환: AI 파일럿 챌린지](#3-도메인-전환-ai-파일럿-챌린지)
-4. [시스템 구현 및 파일 구조](#4-시스템-구현-및-파일-구조)
-5. [심층 실험 결과 및 분석](#5-심층-실험-결과-및-분석)
+2. [해결하고자 한 기존 모델들의 문제점](#2-해결하고자-한-기존-모델들의-문제점)
+3. [이론적 기반 및 수학적 공식](#3-이론적-기반-및-수학적-공식)
+4. [도메인 전환: AI 파일럿 챌린지](#4-도메인-전환-ai-파일럿-챌린지)
+5. [시스템 구현 및 파일 구조](#5-시스템-구현-및-파일-구조)
+6. [심층 실험 결과 및 분석](#6-심층-실험-결과-및-분석)
 
 ---
 
 ## 1. 프로젝트 개요 및 동기
 이 프로젝트는 초기에 인지적 지능을 달성하기 위한 350M 파라미터의 언어 모델로 시작되었습니다. 그러나 통계적 암기 학습($L_{ce}$)을 4,000 스텝 진행하는 동안 "의미론적 붕괴(Semantic Collapse)"(예: `-alskman...` 같은 외계어 생성)와 심각한 논리적 환각(Hallucination) 현상을 겪었습니다. 단순히 파라미터를 늘리고 교차 엔트로피(Cross-Entropy) 같은 통계적 빈도에 의존하는 것으로는 진정한 인과적 이해에 도달할 수 없다는 것이 명백해졌습니다.
 
-이를 극복하기 위해 프로젝트는 급진적인 패러다임 전환을 겪었습니다:
-1.  **아키텍처**: 이산적인 트랜스포머/RNN 레이어에서 **연속 프랙탈 언어 모델(CFLM, Continuous Fractal Language Model)**로 전환.
-2.  **훈련 방식**: 50,000 에폭의 역전파를 버리고, 시뮬레이션된 "수면 단계(Sleep Phase)"에서 **Zero-Epoch Few-Shot Learning (FCLAP)** 및 **능동적 자유 에너지 토너먼트 손실(AFETL)**을 도입.
-3.  **도메인**: 텍스트 예측에서 실시간 비행 동역학(**2026 AI Pilot Top Gun Challenge**)으로 전환. 실시간 폐루프(Closed-loop) 제어를 위해 파라미터를 350M에서 15M으로 경량화($\mathcal{O}(1)$ 연산).
+이를 극복하기 위해 프로젝트는 급진적인 패러다임 전환을 겪어, 텍스트를 예측하는 언어 모델에서 실제 물리적 동역학을 이해하는 **Fighter-CFLM v2.8**로 진화했습니다.
 
 ---
 
-## 2. 이론적 기반 및 수학적 공식
+## 2. 해결하고자 한 기존 모델들의 문제점
+이 프로젝트는 기존 대형 언어 모델(LLM)과 표준 딥러닝 아키텍처가 가진 4가지 치명적인 한계를 극복하기 위해 탄생했습니다:
+
+1.  **통계적 흉내 내기 vs 인과적 이해**: 기존의 자기회귀(Autoregressive) 모델은 교차 엔트로피($L_{ce}$)에 의존하여 단순히 통계적 빈도가 높은 다음 단어를 예측합니다. 이는 원인과 결과에 대한 물리적 이해 없이 구문만 흉내 내기 때문에, 데이터의 분포를 벗어나면 "의미론적 갇힘(Semantic Looping)"이나 심각한 논리적 환각을 유발합니다.
+2.  **높은 지연시간($\mathcal{O}(N^2)$) vs 실시간 제어($\mathcal{O}(1)$)**: 표준 트랜스포머는 시퀀스가 길어질수록 연산량이 기하급수적으로 증가합니다. 이는 1밀리초 미만의 레이턴시가 필요한 비행 동역학과 같은 실시간 연속 제어 시스템에는 전혀 사용할 수 없습니다.
+3.  **파국적 망각 (Catastrophic Forgetting)**: 표준 역전파(Backpropagation) 방식은 새로운 지식을 배울 때 전체 가중치 매트릭스를 무분별하게 덮어써 버리므로, 기존에 학습한 근본적인 핵심 지식을 파괴합니다.
+4.  **에너지(대사) 비효율성**: 기존 신경망은 입력값의 난이도나 예측 가능성과 상관없이 항상 동일한 깊이의 전체 연산을 수행하므로, 막대한 컴퓨팅 에너지를 낭비합니다.
+
+### Fighter-CFLM의 해결책:
+*   **문법이 아닌 물리 법칙 학습**: 모델을 비행 시뮬레이터(JSBSim)로 옮겨, 다음 토큰 확률이 아닌 '물리적 결과(AFETL)'를 통해 인과성을 학습하도록 도메인을 전환했습니다.
+*   **$\mathcal{O}(1)$ 미분 방정식(ODE) 아키텍처**: 이산적인 레이어를 연속 프랙탈 언어 모델(CFLM)로 교체하고, 파라미터를 15M으로 경량화하여 즉각적인 실시간 제어를 구현했습니다.
+*   **이중 메모리 시스템**: 불변하는 물리 법칙($\theta_{fixed}$)과 활성 학습 캐시($\theta_{plastic}$)를 분리하여 파국적 망각을 원천 차단했습니다.
+*   **대사 게이팅 (Metabolic Gating)**: "빠른 놀람(FastSurprisal)" 개념을 도입하여, AI가 예상치 못한 물리적 상황을 마주했을 때만 무거운 연산(에너지)을 사용하도록 설계했습니다.
+
+---
+
+## 3. 이론적 기반 및 수학적 공식
 
 ### A. 이중 메모리 시스템 및 빠른 놀람(FastSurprisal)
 이 아키텍처는 메모리를 두 가지 가중치로 분리합니다:
@@ -139,7 +167,7 @@ $$\mathcal{L}(\Delta \theta_k) = \underbrace{-\log P(x_{plastic} \mid \theta_{fi
 
 ---
 
-## 3. 도메인 전환: AI 파일럿 챌린지
+## 4. 도메인 전환: AI 파일럿 챌린지
 
 전투 비행 시뮬레이션 챌린지에 참여하기 위해, 언어 토큰 대신 물리 벡터를 처리하도록 I/O 인터페이스를 완전히 개조했습니다.
 
@@ -152,7 +180,7 @@ $$\mathcal{L}(\Delta \theta_k) = \underbrace{-\log P(x_{plastic} \mid \theta_{fi
 
 ---
 
-## 4. 시스템 구현 및 파일 구조
+## 5. 시스템 구현 및 파일 구조
 
 이 프로젝트는 "낮(실시간 시뮬레이션) / 밤(클라우드 통합)" 사이클로 작동합니다:
 
@@ -163,7 +191,7 @@ $$\mathcal{L}(\Delta \theta_k) = \underbrace{-\log P(x_{plastic} \mid \theta_{fi
 
 ---
 
-## 5. 심층 실험 결과 및 분석
+## 6. 심층 실험 결과 및 분석
 
 ![Flight Evolution](flight_evolution_graph.png)
 
